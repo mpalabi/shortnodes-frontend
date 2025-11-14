@@ -1,0 +1,55 @@
+ 
+
+@use "./variables" as *;
+@use "./mixins" as *;
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  background-color: $color-bg;
+  color: $color-text;
+  line-height: 1.5;
+}
+
+/* Tailwind preflight (optional minimal reset) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a { color: $color-accent; text-decoration: none; }
+code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; }
+
+.card {
+  background: $color-surface;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: $shadow-sm;
+}
+
+// Skeleton loading
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+  animation: skeleton 1.2s infinite;
+}
+@keyframes skeleton {
+  100% { transform: translateX(100%); }
+}
+

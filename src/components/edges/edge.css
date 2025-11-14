@@ -1,0 +1,22 @@
+.edge-bridge { display: flex; align-items: center; gap: 6px; }
+.edge-pill {
+  width: 26px; height: 26px;
+  border-radius: 999px;
+  border: 2px solid #cbd5e1;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.edge-pop {
+  position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 8px 10px; min-width: 160px;
+}
+.edge-pop-title { font-weight: 600; color: #1f2937; margin-bottom: 4px; }
+.edge-pop-body { color: #111827; }
+.edge-input { border: 0; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 4px 0; font: inherit; width: 100%; }
+.edge-input:focus { outline: none; border-bottom-color: #3b82f6; }
+.edge-textarea { width: 100%; border: 1px solid #e5e7eb; border-radius: 6px; padding: 6px 8px; font: inherit; }
+.edge-textarea:focus { outline: none; border-color: #3b82f6; }
+.edge-select { width: 100%; border: 1px solid #e5e7eb; border-radius: 6px; padding: 6px 8px; font: inherit; background: #fff; }
+

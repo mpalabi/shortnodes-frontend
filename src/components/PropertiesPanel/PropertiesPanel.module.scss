@@ -1,0 +1,61 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+.properties {
+  background: $color-surface;
+  border-left: 1px solid $border-color;
+  padding: $spacing-md;
+}
+
+.tabs {
+  display: flex;
+  gap: $spacing-md;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $spacing-md;
+}
+.tab {
+  padding: 8px 0;
+  color: $color-text-muted;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.activeTab {
+  color: $color-text;
+  border-bottom: 2px solid $color-text;
+}
+
+.groupTitle { font-weight: 600; margin: $spacing-sm 0; }
+.field { margin-bottom: $spacing-sm; }
+.label { display: block; font-size: 14px; margin-bottom: 6px; color: $color-text; }
+.input, .select, .textarea {
+  width: 100%;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px;
+  font: inherit;
+}
+.textarea { min-height: 80px; }
+.optionRow { display: grid; grid-template-columns: 1fr 1fr auto; gap: $spacing-sm; align-items: center; margin-bottom: $spacing-sm; }
+.btnBar { display: flex; gap: $spacing-sm; margin-top: $spacing-sm; }
+.btn { border: 1px solid $border-color; background: #fff; padding: 8px 12px; border-radius: 8px; }
+
+// Empty state (simpler look)
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 120px);
+  color: $color-text-muted;
+}
+.emptyCard {
+  text-align: left;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: $shadow-sm;
+}
+.emptyTitle { font-weight: 700; color: $color-text; margin-bottom: 4px; }
+.emptyHint { color: $color-text-muted; }
+

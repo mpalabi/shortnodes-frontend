@@ -1,0 +1,140 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+.builder-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr 320px;
+  height: 100vh;
+}
+
+.builder-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-lg;
+  background: $color-surface;
+  border-bottom: 1px solid $border-color;
+}
+
+.builder-title {
+  font-weight: 600;
+}
+
+.titleInput {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: 600;
+}
+.titleInput:focus { outline: none; }
+
+.builder-actions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.button {
+  border: 1px solid $border-color;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.2s ease;
+  
+  &.button-pending {
+    background: #fef3c7;
+    border-color: #f59e0b;
+    color: #92400e;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.builder-footer {
+  position: fixed;
+  left: 240px;
+  right: 320px;
+  bottom: 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; // let canvas interact except buttons
+}
+
+.toolbar {
+  pointer-events: auto;
+  display: flex;
+  gap: 8px;
+  background: $color-surface;
+  border: 1px solid $border-color;
+  border-radius: 16px;
+  box-shadow: $shadow-md;
+  padding: 8px 10px;
+}
+
+.tool {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $border-color;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tool:hover { background: #f8fafc; box-shadow: $shadow-sm; }
+.tool:active { transform: translateY(1px); }
+
+// Active (pressed) toggle state
+.tool[aria-pressed="true"] {
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+}
+.tool[aria-pressed="true"]:hover {
+  background: rgba(0,0,0,0.92);
+}
+
+.ctxmenu {
+  position: fixed;
+  z-index: 50;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  box-shadow: $shadow-md;
+  padding: 6px;
+}
+.ctxitem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.ctxitem:hover { background: #f3f4f6; }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: #111827;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: $shadow-md;
+  max-width: 80vw;
+  font-size: 14px;
+  line-height: 1.3;
+  cursor: pointer;
+}
+

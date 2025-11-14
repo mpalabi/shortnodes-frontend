@@ -1,0 +1,175 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+.sidebar {
+  background: $color-surface;
+  border-right: 1px solid $border-color;
+  padding: $spacing-md $spacing-sm;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  background: #fff;
+  margin-bottom: $spacing-md;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $color-text-muted;
+  margin: $spacing-md 0 $spacing-sm 0;
+}
+
+.sectionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge {
+  font-size: 12px;
+  color: $color-text-muted;
+  background: #f3f4f6;
+  border: 1px solid $border-color;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.group { margin-bottom: $spacing-sm; }
+
+.list { display: grid; gap: 6px; }
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  padding: 8px 10px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.item:hover { box-shadow: $shadow-sm; }
+
+.nested { margin-left: 16px; }
+
+.icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: #f3f4f6;
+}
+
+.toggle {
+  margin-left: auto;
+  color: $color-text-muted;
+}
+
+.handle {
+  margin-left: auto;
+  color: $color-text-muted;
+  font-size: 14px;
+}
+
+/* Tree list */
+.tree { margin-top: $spacing-sm; display: grid; gap: 4px; }
+.treeItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  line-height: 20px;
+}
+.treeItem:hover { background: #f3f4f6; }
+.active { background: #f3f4f6; outline: 1px solid $border-color; }
+.caret {
+  width: 16px;
+  color: $color-text-muted;
+}
+.glyph {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  font-size: 10px;
+  background: #fff;
+}
+.menu {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #4338ca;
+}
+.input {
+  background: #ecfccb;
+  border-color: #d9f99d;
+  color: #3f6212;
+}
+.api {
+  background: #e0f2fe;
+  border-color: #bae6fd;
+  color: #075985;
+}
+.subflow {
+  background: #fef9c3;
+  border-color: #fde68a;
+  color: #92400e;
+}
+.end {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+.caretBtn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: $color-text-muted;
+  width: 16px;
+  cursor: pointer;
+}
+.label { flex: 1; text-align: left; color: $color-text; }
+.labelBtn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+}
+.meta { color: $color-text-muted; font-size: 12px; }
+.metaBtn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 12px;
+  cursor: pointer;
+}
+.iconBtn {
+  appearance: none;
+  border: 1px solid $border-color;
+  background: #fff;
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  cursor: pointer;
+}
+.indent { width: 12px; }
+
