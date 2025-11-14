@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+// Avoid Node path/__dirname usage to keep TS happy without @types/node in CI
 
 // Single config export
 export default defineConfig({
@@ -18,14 +18,12 @@ export default defineConfig({
     }
   },
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
+    alias: {}
   },
   css: {
     preprocessorOptions: {
       scss: {
-        includePaths: [path.resolve(__dirname, 'src')]
+        // keep default options; no includePaths (not supported in current typings)
       }
     }
   }

@@ -51,7 +51,7 @@ function Builder() {
   const stompRef = useRef<Client | null>(null);
   const selectionStateRef = useRef<{ nodeId: string | null; edgeIds: string[] }>({ nodeId: null, edgeIds: [] });
   const isRestoringSelectionRef = useRef(false);
-  const flowCanvasRef = useRef<any>(null);
+  // removed ref; use onReady for API access
 
   function pushHistory() {
     setHistory((h) => h.concat([{ nodes, edges }]));
@@ -353,8 +353,8 @@ function Builder() {
         console.log('WebSocket: Creating SockJS connection to:', wsUrl);
         const sock = new SockJS(wsUrl);
         sock.onopen = () => console.log('SockJS: Connection opened');
-        sock.onclose = (event) => console.log('SockJS: Connection closed', event);
-        sock.onerror = (error) => console.error('SockJS: Connection error', error);
+        sock.onclose = (event: any) => console.log('SockJS: Connection closed', event);
+        sock.onerror = (error: any) => console.error('SockJS: Connection error', error);
         return sock;
       },
       reconnectDelay: 2000,
@@ -573,7 +573,7 @@ function Builder() {
               code: (embed.data as any).code || '',
               invalidTargetMenuId: (embed.data as any).onInvalidTargetId
             };
-            options.unshift({ id: (embed.data as any).optionId, keyIndex: 0, label: 'Input', targetMenuId: (embed.target as any), condition: cond });
+            options.unshift({ id: (embed.data as any).optionId, keyIndex: 0, label: 'Input', targetMenuId: (embed.target as any), condition: cond } as any);
           }
           return {
             id: n.id,
@@ -593,11 +593,7 @@ function Builder() {
       const body = { appId, menus };
       console.log('Attempting to save via WebSocket with body:', body);
       const stomp = stompRef.current;
-      console.log('WebSocket client state:', { 
-        exists: !!stomp, 
-        connected: stomp?.connected,
-        readyState: stomp?.ws?.readyState 
-      });
+      console.log('WebSocket client state:', { exists: !!stomp, connected: stomp?.connected });
       
       if (stomp && stomp.connected) {
         console.log('Saving graph via WebSocket to destination:', `/app/apps/${appId}/save-graph`);
@@ -721,7 +717,6 @@ function Builder() {
           }}
         />
         <FlowCanvas
-          ref={flowCanvasRef}
           nodes={useMemo(() => nodes.map((n) => ({
             ...n,
             data: {
@@ -970,7 +965,7 @@ function Builder() {
             setEdges((eds) => eds.map((e) => selectedEdgeIds.includes(e.id) ? ({ ...e, data: { ...(e.data as any), ...partial } }) : e));
           }}
           allNodes={nodes}
-          onCreateEdge={(sourceId, targetId) => setEdges((eds) => addEdge({ source: sourceId, target: targetId }, eds))}
+          onCreateEdge={(sourceId, targetId) => setEdges((eds) => addEdge({ source: sourceId, target: targetId } as any, eds))}
           onLinkOption={(optionIndex, targetId) => {
             // remove any existing edge for this option then add single link
             const sourceId = selectedNodeId;

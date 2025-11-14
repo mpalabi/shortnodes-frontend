@@ -2,25 +2,6 @@ import styles from "./PropertiesPanel.module.scss";
 import { useEffect, useMemo, useState } from "react";
 import type { Node, Edge } from "reactflow";
 
-function TabButton({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        padding: 8,
-        border: 0,
-        borderBottom: active ? "2px solid #2563eb" : "2px solid transparent",
-        background: "transparent",
-        color: active ? "#111827" : "#6b7280",
-        fontWeight: 600,
-        cursor: "pointer"
-      }}
-    >
-      {label}
-    </button>
-  );
-}
-
 type Props = {
   selectedNode: Node | null;
   selectedEdge: Edge | null;
@@ -35,7 +16,7 @@ type Props = {
   onUnlinkEmbed?: () => void;
 };
 
-function PropertiesPanel({ selectedNode, selectedEdge, onUpdateNode, onUpdateEdge, allNodes, onCreateEdge, onAddChildNode, onCommit, onLinkOption, onDeleteEdge, onUnlinkEmbed }: Props) {
+function PropertiesPanel({ selectedNode, selectedEdge, onUpdateNode, onUpdateEdge, allNodes, onCreateEdge: _onCreateEdge, onAddChildNode: _onAddChildNode, onCommit, onLinkOption, onDeleteEdge, onUnlinkEmbed }: Props) {
   const [tab, setTab] = useState("Node");
   const data = useMemo(() => (selectedNode?.data as any) || {}, [selectedNode]);
   useEffect(() => {
@@ -182,8 +163,7 @@ function PropertiesPanel({ selectedNode, selectedEdge, onUpdateNode, onUpdateEdg
             <button className={styles.btn} onClick={() => {
               const next = [...(data.options || []), { id: crypto.randomUUID(), label: '', targetId: '' }];
               onUpdateNode({ options: next });
-            onBlur={onCommit}
-            }}>+ Add Option</button>
+            }} onBlur={onCommit}>+ Add Option</button>
             {onUnlinkEmbed && (
               <button className={styles.btn} onClick={() => { onUnlinkEmbed(); onCommit(); }}>Unlink embedded input</button>
             )}

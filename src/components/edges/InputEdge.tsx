@@ -3,7 +3,8 @@ import type { EdgeProps } from 'reactflow';
 import { BaseEdge, EdgeLabelRenderer, getBezierPath, useReactFlow } from 'reactflow';
 import './edge.css';
 
-export default function InputEdge({ id, source, sourceHandle, sourceX, sourceY, targetX, targetY, sourcePosition, targetPosition, markerEnd, style, data }: EdgeProps) {
+export default function InputEdge(props: EdgeProps & { sourceHandle?: string | null }) {
+  const { id, source, sourceHandle, sourceX, sourceY, targetX, targetY, sourcePosition, targetPosition, markerEnd, style, data } = props as any;
   const [open, setOpen] = React.useState(false);
   const [edgePath, labelX, labelY] = getBezierPath({ sourceX, sourceY, targetX, targetY, sourcePosition, targetPosition });
   const prompt: string = (data as any)?.prompt || 'Enter value';

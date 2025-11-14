@@ -11,7 +11,7 @@ type Menu = { id: string; name: string; text: string };
 function Sandbox() {
   const { id } = useParams();
   const autoSession = useMemo(() => crypto.randomUUID(), []);
-  const [sessionId, setSessionId] = useState(autoSession);
+  const [sessionId, setSessionId] = useState<string>(autoSession as unknown as string);
   const [input, setInput] = useState("");
   const [flowId, setFlowId] = useState("");
   const [screen, setScreen] = useState<string>("");

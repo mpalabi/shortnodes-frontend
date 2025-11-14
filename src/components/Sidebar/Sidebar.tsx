@@ -1,5 +1,6 @@
 import styles from "./Sidebar.module.scss";
 import { useMemo, useState } from "react";
+import type { ReactElement } from "react";
 import type { Node } from "reactflow";
 import { List, Type, Plug, GitBranch, Square, Crosshair, Link2Off } from 'lucide-react';
 
@@ -14,7 +15,7 @@ type Props = {
 function Sidebar({ nodes, selectedNodeId, onSelectNode, onGoToNode, onUnlinkOption }: Props) {
   const [open, setOpen] = useState<Record<string, boolean>>({});
 
-  type TreeNode = { id: string; label: string; meta?: string; icon?: JSX.Element; children?: TreeNode[]; onClick?: () => void };
+  type TreeNode = { id: string; label: string; meta?: string; icon?: ReactElement; children?: TreeNode[]; onClick?: () => void };
 
   // Basic parent-child nesting using data.parentId if present
   const tree = useMemo<TreeNode[]>(() => {
