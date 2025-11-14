@@ -13,7 +13,11 @@ import type { Edge, Node, NodeChange, EdgeChange, Connection } from "reactflow";
 import { applyNodeChanges, applyEdgeChanges, addEdge } from "reactflow";
 import { List, Type, Plug, GitBranch, Square, Hand, MousePointer, Undo2, Redo2 } from 'lucide-react';
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080";
+const API_BASE =
+  (import.meta.env.VITE_API_BASE as string) ||
+  (typeof window !== 'undefined' && window.location.protocol === 'https:'
+    ? "https://shortnodes-backend.onrender.com"
+    : "http://localhost:8080");
 
 type Flow = { id: string; name: string; jsonDefinition: string };
 

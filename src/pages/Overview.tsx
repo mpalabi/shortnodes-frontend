@@ -4,7 +4,11 @@ import Skeleton from '../components/ui/Skeleton';
 import AuthModal from '../components/AuthModal';
 import { useNavigate } from 'react-router-dom'
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080";
+const API_BASE =
+  (import.meta.env.VITE_API_BASE as string) ||
+  (typeof window !== 'undefined' && window.location.protocol === 'https:'
+    ? "https://shortnodes-backend.onrender.com"
+    : "http://localhost:8080");
 
 type Flow = { id: string; name: string; jsonDefinition: string };
 

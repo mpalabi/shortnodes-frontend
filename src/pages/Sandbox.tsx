@@ -3,7 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { Play, RotateCcw } from "lucide-react";
 import PhoneFrame from "../components/PhoneFrame";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080";
+const API_BASE =
+  (import.meta.env.VITE_API_BASE as string) ||
+  (typeof window !== 'undefined' && window.location.protocol === 'https:'
+    ? "https://shortnodes-backend.onrender.com"
+    : "http://localhost:8080");
 
 type AppItem = { id: string; name: string };
 type Menu = { id: string; name: string; text: string };
